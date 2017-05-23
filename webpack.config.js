@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
   entry: [
     './src/index.js'
@@ -14,7 +16,9 @@ module.exports = {
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
-    }]
+    },{test: /\s?css$/, 
+      loaders:["style", "css", "sass"], 
+      include: path.join(__dirname,'src')}]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
