@@ -1,4 +1,4 @@
-# MiStay Search Component
+# MiStay Search Functionality built on top of React starter package
 
 ### Getting Started
 

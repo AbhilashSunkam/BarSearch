@@ -15,7 +15,7 @@ class CitySearch extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			value : ""
+			value : "Delhi"
 		}
 		
 	}
@@ -27,10 +27,9 @@ class CitySearch extends Component{
 	}
 
 	render() {
-		
 		return(
 			<div>
-			<Dropdown fluid placeholder='Select City' onChange={this.change.bind(this)} search selection options={options}/>
+			<Dropdown defaultValue='Delhi' fluid placeholder='Select City' onChange={this.change.bind(this)} search selection options={options}/>
 			</div>
 		)
 	}

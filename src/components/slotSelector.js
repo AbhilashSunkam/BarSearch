@@ -1,8 +1,6 @@
 import React , {Component} from 'react';
 import { Icon, Table, Button } from 'semantic-ui-react';
 
-
-
 class SlotSelector extends Component {
 
 	constructor(props){
@@ -31,8 +29,6 @@ class SlotSelector extends Component {
   	componentWillUnmount() {
     this.props.onRef(null)
   	}
-
-
 
 	reset = () => {
 		console.log(" reset ....");
@@ -166,16 +162,6 @@ class SlotSelector extends Component {
 
 	render(props){
 
-		console.log(this.state.isSelected);
-		console.log(this.state.iconName);
-		console.log(this.state.number_of_slots_selected);
-		console.log("Starting slot " + this.state.starting_slot);
-		console.log("Ending slot " + this.state.ending_slot);
-		console.log(this.state.starting_slots_date_time);
-		console.log(this.state.ending_slots_date_time);
-
-		
-
 		let firstDateString = this.props.first_day;
 		let secondDateString = this.props.second_day;
 		let thirdDateString = this.props.third_day;
@@ -235,7 +221,6 @@ class SlotSelector extends Component {
 			        </Table.Row>
 			    </Table.Body>
 			</Table>
-
 			</div>
 		)
 	}

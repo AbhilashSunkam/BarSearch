@@ -8,9 +8,9 @@ class DateSelector extends Component {
 	constructor(props){
 		super(props);
 
-		var firstDay = moment();
-		var secondDay = moment(firstDay).add('days',1);
-		var thirdDay = moment(secondDay).add('days',1);
+		let firstDay = moment();
+		let secondDay = moment(firstDay).add('days',1);
+		let thirdDay = moment(secondDay).add('days',1);
 
 		this.state = {
 			startDate : moment(),
@@ -22,9 +22,9 @@ class DateSelector extends Component {
 
 	handleChange = (date) => {
 
-		var firstDay = moment(date);
-		var secondDay = moment(firstDay).add('days',1);
-		var thirdDay = moment(secondDay).add('days', 1);
+		let firstDay = moment(date);
+		let secondDay = moment(firstDay).add('days',1);
+		let thirdDay = moment(secondDay).add('days', 1);
 
 		this.child.reset();
 
@@ -37,7 +37,7 @@ class DateSelector extends Component {
   	}
 
   	slots_data = (numberOfSlots, slotStartTime, slotEndTime) => {
-  		this.props.selected_date_data(numberOfSlots, slotStartTime, slotEndTime);
+  		this.props.selected_date_data(numberOfSlots, slotStartTime, slotEndTime, this.state.startDate.format("YYYY-MM-DD").toString());
   	}
 
 
@@ -56,12 +56,10 @@ class DateSelector extends Component {
     			showMonthDropdown
     			showYearDropdown
     			dropdownMode="select"
-        		// isClearable={true}
     		/>
 
     		<SlotSelector first_day = {this.state.firstDay} second_day = {this.state.secondDay} third_day = {this.state.thirdDay} onRef={ref => (this.child = ref)} slots_data = {this.slots_data} />
 			</div>	
-
 		)
 	}
 }

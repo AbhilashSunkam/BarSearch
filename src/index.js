@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Grid, Image, Button } from 'semantic-ui-react';
-
+import moment from 'moment';
 import CitySearch from './components/citySearch';
 import DateSelector from './components/dateSelector';
 import GuestSelector from './components/guestSelector';
@@ -12,13 +12,13 @@ class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			search_city : "",
+			search_city : "Delhi",
 			guests_total : "",
 			rooms_total : "",
 			slots_selected : "",
 			starting_slot: "",
 			ending_slot:"",
-			check_in_date: ""
+			check_in_date: moment().format("YYYY-MM-DD").toString()
 		}
 	}
 
@@ -30,13 +30,27 @@ class App extends Component {
 		this.setState({rooms_total: rc, guests_total: gc});
 	}
 
-	selected_date = (numberOfSlots, slotsStartTime, slotsEndTime) => {
+	selected_date = (numberOfSlots, slotsStartTime, slotsEndTime, checkInDate) => {
 		this.setState({slots_selected: numberOfSlots, starting_slot: slotsStartTime,
-						ending_slot: slotsEndTime});
+						ending_slot: slotsEndTime, check_in_date: checkInDate});
+	}
+
+	search = () => {
+		if(this.state.slots_selected) {
+			alert("Perform POST request with following parameters \n\n"+
+				"1) City : "+ this.state.search_city +"\n"+
+				"2) Selected Date : "+ this.state.check_in_date+ "\n"+
+				"3) Starting Slot : "+ this.state.starting_slot+ "\n"+
+				"4) Ending Slot : "+ this.state.ending_slot +"\n"+
+				"5) Number of Slots : "+this.state.slots_selected+ "\n"+
+				"6) Number of Guests : "+this.state.guests_total+"\n"+
+				"7) Number of Rooms : "+this.state.rooms_total);
+		} else {
+			alert("Select slots for searching ... ");
+		}
 	}
 	
 	render(){
-
 		return(
 		<div>
 			<Grid celled>
@@ -48,20 +62,13 @@ class App extends Component {
 			        <br/>
 			        <GuestSelector room_guest_data = {this.room_guest} />
 			     	<br/>
-			     	<Button color='orange' fluid onClick={() => this.search}> Search </Button>
+			     	<Button color='orange' fluid onClick={() => this.search()}> Search </Button>
 			      	</Grid.Column>
 			      	<Grid.Column width={11}>
 			        <DateSelector selected_date_data = {this.selected_date} />
 			      	</Grid.Column>
 			    </Grid.Row>
-			</Grid>
-			<p>City {this.state.search_city} </p>
-			<p>Guests {this.state.guests_total} </p>
-			<p>Rooms {this.state.rooms_total} </p>
-			<p>No of slots {this.state.slots_selected} </p>
-			<p>starting_slot {this.state.starting_slot} </p>
-			<p>ending_slot {this.state.ending_slot} </p>
-			<p>Check in Date {this.state.check_in_date} </p>
+			</Grid>	
 		</div>
 		)
 	}	
