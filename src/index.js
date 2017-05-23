@@ -17,6 +17,7 @@ class App extends Component {
 			rooms_total : "",
 			slots_selected : "",
 			starting_slot: "",
+			ending_slot:"",
 			check_in_date: ""
 		}
 	}
@@ -29,8 +30,9 @@ class App extends Component {
 		this.setState({rooms_total: rc, guests_total: gc});
 	}
 
-	selected_date = (data) => {
-		// this.setState()
+	selected_date = (numberOfSlots, slotsStartTime, slotsEndTime) => {
+		this.setState({slots_selected: numberOfSlots, starting_slot: slotsStartTime,
+						ending_slot: slotsEndTime});
 	}
 	
 	render(){
@@ -58,6 +60,7 @@ class App extends Component {
 			<p>Rooms {this.state.rooms_total} </p>
 			<p>No of slots {this.state.slots_selected} </p>
 			<p>starting_slot {this.state.starting_slot} </p>
+			<p>ending_slot {this.state.ending_slot} </p>
 			<p>Check in Date {this.state.check_in_date} </p>
 		</div>
 		)

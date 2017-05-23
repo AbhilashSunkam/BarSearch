@@ -36,8 +36,8 @@ class DateSelector extends Component {
 	    });
   	}
 
-  	slots_data = (data) => {
-  		
+  	slots_data = (numberOfSlots, slotStartTime, slotEndTime) => {
+  		this.props.selected_date_data(numberOfSlots, slotStartTime, slotEndTime);
   	}
 
 

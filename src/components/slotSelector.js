@@ -32,6 +32,8 @@ class SlotSelector extends Component {
     this.props.onRef(null)
   	}
 
+
+
 	reset = () => {
 		console.log(" reset ....");
 		let s = this.state.isSelected.slice();
@@ -42,6 +44,9 @@ class SlotSelector extends Component {
 		}
 		this.setState({isSelected:s , iconName: name, number_of_slots_selected: 0, starting_slot: "", ending_slot: "",
 					  starting_slots_date_time: "", ending_slots_date_time: ""});
+
+		this.props.slots_data(0 , "" , "");
+
 	}
 
 	dayClick = (data,key) => {
@@ -154,6 +159,8 @@ class SlotSelector extends Component {
 		this.setState({isSelected: s , iconName: name, number_of_slots_selected: number_of_slots_selected, 
 			starting_slot:starting_slot, ending_slot:ending_slot, starting_slots_date_time: starting_slots_date_time,
 			ending_slots_date_time: ending_slots_date_time});
+
+		this.props.slots_data(number_of_slots_selected, starting_slots_date_time, ending_slots_date_time);
 			
 	}
 
