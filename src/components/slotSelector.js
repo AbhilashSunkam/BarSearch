@@ -24,10 +24,10 @@ class SlotSelector extends Component {
 	}
 
 	componentDidMount() {
-    this.props.onRef(this)
+    	this.props.onRef(this)
   	}
   	componentWillUnmount() {
-    this.props.onRef(null)
+    	this.props.onRef(null)
   	}
 
 	reset = () => {
